@@ -7,6 +7,7 @@ declare -A papka_kolvo
 
 find "$input_dir" -type f | while read papka
 do
+
     name=$(basename "$papka")
     osn="${name%.*}"
     kon="${name##*.}"
