@@ -20,4 +20,5 @@ do
         cp "$papka" "$output_dir/$newname"
         ((papka_kolvo["$osn"]++))
     fi
+    
 done
