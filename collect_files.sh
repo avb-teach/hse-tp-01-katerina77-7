@@ -13,18 +13,12 @@ do
     
     if [[ ! -e "$output_dir/$name" ]]
     then
-        newname="$papka"
+        cp "$papka" "$output_dir/$name"
         papka_kolvo["$osn"]=0  
         
     else
+        newname="${osn}$((${papka_kolvo["$osn"]}+1)).$kon"
+        cp "$papka" "$output_dir/$newname"
         ((papka_kolvo["$osn"]++))
-        if [["$osn" == "$kon"]]
-        then
-            newname="${osn}_${papka_kolvo["$osn"]}"
-        else
-            newname="${osn}_${papka_kolvo["$osn"]}.$kon"
-        fi
-        
     fi
-    cp "$papka" "$output_dir/$newname"
 done
