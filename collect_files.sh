@@ -3,7 +3,7 @@
 input_dir="$1"
 output_dir="$2"
 
-kolvo=1
+declare -A papka_kolvo
 
 find "$input_dir" -type f | while read papka
 do
@@ -14,11 +14,11 @@ do
     if [[ ! -e "$output_dir/$name" ]]
     then
         cp "$papka" "$output_dir/$name"
-        $kolvo=0  
+        papka_kolvo["$osn"]=0  
         
     else
-        newname="${osn}_${kolvo}.$kon"
+        newname="${osn}$((${papka_kolvo["$osn"]}+1)).$kon"
         cp "$papka" "$output_dir/$newname"
-        ((kolvo++))
+        ((papka_kolvo["$osn"]++))
     fi
 done
