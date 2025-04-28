@@ -20,9 +20,9 @@ do
         ((papka_kolvo["$osn"]++))
         if [["$osn" == "$kon"]]
         then
-            newname="${osn}$((${papka_kolvo["$osn"]}+1))"
+            newname="${osn}_${papka_kolvo["$osn"]}"
         else
-            newname="${osn}$((${papka_kolvo["$osn"]}+1)).$kon"
+            newname="${osn}_${papka_kolvo["$osn"]}.$kon"
         fi
         
     fi
