@@ -7,19 +7,24 @@ declare -A papka_kolvo
 
 find "$input_dir" -type f | while read papka
 do
-
     name=$(basename "$papka")
     osn="${name%.*}"
     kon="${name##*.}"
     
     if [[ ! -e "$output_dir/$name" ]]
     then
-        cp "$papka" "$output_dir/$name"
+        newname="$papka"
         papka_kolvo["$osn"]=0  
+        
     else
-        newname="${osn}$((${papka_kolvo["$osn"]}+1)).$kon"
-        cp "$papka" "$output_dir/$newname"
         ((papka_kolvo["$osn"]++))
+        if [["$osn" == "$kon"]]
+        then
+            newname="${osn}$((${papka_kolvo["$osn"]}+1))"
+        else
+            newname="${osn}$((${papka_kolvo["$osn"]}+1)).$kon"
+        fi
+        
     fi
-    
+    cp "$papka" "$output_dir/$newname"
 done
