@@ -15,7 +15,6 @@ do
     then
         cp "$papka" "$output_dir/$name"
         papka_kolvo["$osn"]=0  
-        
     else
         newname="${osn}$((${papka_kolvo["$osn"]}+1)).$kon"
         cp "$papka" "$output_dir/$newname"
